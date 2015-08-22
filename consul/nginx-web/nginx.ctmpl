@@ -1,0 +1,11 @@
+upstream backend {  
+        {{range service "server"}}
+        server 172.17.42.1:{{.Port}};{{end}}
+}
+server {  
+        server_name "10.0.2.15";
+        location / {
+                proxy_pass http://backend;
+        }
+}
+

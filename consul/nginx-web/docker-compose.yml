@@ -1,0 +1,13 @@
+---
+web:  
+  image: nginx
+  volumes:
+    - ./sites-enabled:/etc/nginx/conf.d
+  ports:
+    - "80:80"
+  links:
+    - rails
+rails:  
+  image: binblee/server
+  ports:
+    - "3000"
